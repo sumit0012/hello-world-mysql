@@ -1,0 +1,14 @@
+app:
+  name: hello-world
+  image: "sam3ctc/hello-world:latest"
+  replicas: 1
+  containerPort: 8080
+  ingressHost: hello.example.com
+
+mysql:
+  name: mysql
+  image: "mysql:8"
+  database: hello_db
+  user: root
+  password: root
+  storageSize: 5Gi
