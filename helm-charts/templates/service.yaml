@@ -1,11 +1,26 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.app.name }}
+  name: hello-world-service
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
-    app: {{ .Values.app.name }}
+    app: hello-world
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: {{ .Values.app.containerPort }}
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+  type: {{ .Values.service.type }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+  clusterIP: None

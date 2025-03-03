@@ -2,17 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
+  namespace: {{ .Values.namespace }}
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host: {{ .Values.app.ingressHost }}
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.app.name }}
+                name: hello-world-service
                 port:
-                  number: 80
+                  number: {{ .Values.service.port }}

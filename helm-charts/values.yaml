@@ -1,14 +1,25 @@
-app:
-  name: hello-world
-  image: "sam3ctc/hello-world:latest"
-  replicas: 1
-  containerPort: 8080
-  ingressHost: hello.example.com
+namespace: hello-world
+
+replicaCount: 1
+
+image:
+  repository: sam3ct/hello-world
+  tag: latest
+  pullPolicy: IfNotPresent
 
 mysql:
-  name: mysql
-  image: "mysql:8"
+  image: mysql:8.0
   database: hello_db
-  user: root
+  username: root
   password: root
-  storageSize: 5Gi
+  storageSize: 10Gi
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  host: ""
+

@@ -1,6 +1,5 @@
 apiVersion: v2
-name: hello-world-app
-description: A Helm chart for deploying Hello World App with MySQL
-type: application
+name: hello-world-chart
+description: A Helm chart to deploy Hello World app with MySQL
 version: 0.1.0
-appVersion: "1.0"
+appVersion: 1.0.0
