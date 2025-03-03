@@ -4,6 +4,5 @@ metadata:
   name: mysql-config
   namespace: {{ .Values.namespace }}
 data:
-  MYSQL_URL: "mysql"
+  MYSQL_URL: "mysql.hello-world.svc.cluster.local"
   MYSQL_USER: "{{ .Values.mysql.username }}"
-  MYSQL_DB: "{{ .Values.mysql.database }}"

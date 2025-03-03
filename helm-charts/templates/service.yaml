@@ -4,23 +4,9 @@ metadata:
   name: hello-world-service
   namespace: {{ .Values.namespace }}
 spec:
+  ports:
+    - port: 80
+      targetPort: 8080
   selector:
     app: hello-world
-  ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-  type: {{ .Values.service.type }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-  namespace: {{ .Values.namespace }}
-spec:
-  selector:
-    app: mysql
-  ports:
-    - protocol: TCP
-      port: 3306
-  clusterIP: None
+  type: ClusterIP

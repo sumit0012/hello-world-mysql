@@ -4,10 +4,11 @@ metadata:
   name: hello-world-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: "traefik"
 spec:
   rules:
-    - http:
+    - host: {{ .Values.ingress.host }}
+      http:
         paths:
           - path: /
             pathType: Prefix
@@ -15,4 +16,4 @@ spec:
               service:
                 name: hello-world-service
                 port:
-                  number: {{ .Values.service.port }}
+                  number: 80
